@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+      <style>
+            * {
+                  padding: 0;
+                  margin: 0;
+                  box-sizing: border-box;
+            }
+
+            .count-inner {
+                  display: flex;
+                  align-items: center;
+                  text-align: center;
+                  flex-wrap: wrap;
+                  background-color: rgb(72, 94, 164);
+                  padding: 40px;
+            }
+
+            .w-2 {
+                  width: 50%;
+            }
+
+            .count-items {
+                  padding: 20px;
+                  margin: 0 5px;
+                  border-radius: 10px;
+                  background-color: rgb(214, 214, 214);
+            }
+
+            .count-items h3 {
+                  font-size: 30px;
+                  text-transform: capitalize;
+            }
+
+            .count-items .count-word,
+            .count-items .count-charat {
+                  font-size: 40px;
+            }
+
+            .typing {
+                  padding: 40px;
+                  background-color: rgb(72, 94, 164);
+            }
+
+            #inputValue {
+                  font-size: 20px;
+                  font-weight: 700;
+                  width: 100%;
+                  padding: 15px;
+                  outline: none;
+                  border: none;
+                  border-radius: 8px;
+
+            }
+
+            @media (max-width : 775px) {
+                  .w-sm-1 {
+                        width: 100%;
+                  }
+
+                  .count-items {
+                        margin: 10px 0;
+                  }
+            }
+      </style>
+</head>
+
+<body>
+      <div class="count-inner">
+            <div class="w-2 w-sm-1">
+                  <div class="count-items">
+                        <h3>word count</h3>
+                        <p class="count-word">0</p>
+                  </div>
+            </div>
+            <div class="w-2 w-sm-1">
+                  <div class="count-items">
+                        <h3>character count</h3>
+                        <p class="count-charat">0</p>
+                  </div>
+            </div>
+      </div>
+      <div class="typing">
+            <textarea id="inputValue" cols="30" rows="10"></textarea>
+      </div>
+
+      <script>
+            let input = document.getElementById("inputValue");
+            let word = document.querySelector(".count-word");
+            let charat = document.querySelector(".count-charat");
+
+            function countCharat_Word() {
+                  input.addEventListener("input", function () {
+                        let charat_value = input.value.split(" ");
+                        let charatNew = charat_value.filter((item) => {
+                              return !item == "";
+                        });
+                        console.log(charatNew);
+                        word.innerHTML = charatNew.length;
+
+                        let word_value = charatNew.join("");
+                        charat.innerHTML = word_value.length;
+
+                  })
+            }
+            countCharat_Word();
+      </script>
+</body>
+
+</html>
